@@ -1,0 +1,112 @@
+@import './common';
+
+.form {
+  flex: 1 0 50%;
+  padding: 40px;
+
+  &__title {
+    margin-top: 0;
+    color: $primary;
+  }
+
+  &__fieldset {
+    border: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+
+    &__legend {
+      width: 100%;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: $gray-1;
+      padding: 2px 0;
+      margin: 0 0 20px 0;
+      border-bottom: 1px solid $gray-1;
+    }
+
+    &__fields {
+      display: flex;
+      flex-direction: column;
+
+      &__row {
+        display: flex;
+
+        @media (max-width: 600px) {
+          flex-direction: column;
+        }
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+    }
+
+    &__btn {
+      flex-basis: 50%;
+
+      &--submit {
+        @include button($primary);
+      }
+
+      &:nth-child(1) {
+        padding-right: 10px;
+      }
+      &:nth-child(2) {
+        padding-left: 10px;
+      }
+
+      @media (max-width: 600px) {
+        &:nth-child(1) {
+          padding-right: 0;
+          margin-bottom: 10px;
+        }
+        &:nth-child(2) {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+}
+
+.field {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+
+  &:nth-child(1) {
+    padding-right: 10px;
+  }
+  &:nth-child(2) {
+    padding-left: 10px;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+
+    &:nth-child(1) {
+      padding-right: 0;
+    }
+    &:nth-child(2) {
+      padding-left: 0;
+    }
+  }
+
+  &__label {
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: $text-color;
+  }
+
+  &__input {
+    border: 1px solid $gray-1;
+    border-radius: 2px;
+    padding: 5px 10px;
+    font-size: 18px;
+  }
+}

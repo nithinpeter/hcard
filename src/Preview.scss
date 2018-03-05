@@ -1,0 +1,106 @@
+@import './common.scss';
+
+$preview-padding: 40px;
+$card-padding: 20px;
+$card-label-width: 70px;
+$card-img-width: 80px;
+
+.preview {
+  padding: $preview-padding;
+  flex: 1 0 50%;
+  background: $gray-2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    flex-grow: 1;
+    max-width: 500px;
+
+    &__title {
+      text-transform: uppercase;
+      text-align: right;
+      padding-bottom: 10px;
+      color: $gray-1;
+    }
+  }
+}
+
+.card {
+  @include box-shadow();
+
+  &__header {
+    height: 100px;
+    padding: $card-padding;
+    background: $primary;
+    color: $white;
+    display: flex;
+    align-items: flex-end;
+
+    &__text {
+      @include ellipsis;
+      margin: 0 20px 0 0;
+      flex-grow: 1;
+      max-width: calc(
+        100vw -
+          (
+            (2 * #{$preview-padding}) + (2 * #{$card-padding}) + #{$card-img-width}
+          )
+      );
+    }
+
+    &__img {
+      @include box-shadow();
+      margin-bottom: -40px;
+      width: $card-img-width;
+      height: 100px;
+    }
+  }
+
+  &__body {
+    padding: $card-padding $card-padding calc(#{$card-padding} + 10px);
+    background: $white;
+
+    &__field {
+      padding-bottom: 3px;
+      height: 40px;
+      border-bottom: 1px solid gray;
+      display: flex;
+      align-items: flex-end;
+
+      &__label {
+        width: $card-label-width;
+        text-transform: uppercase;
+        font-size: 10px;
+        color: $text-color;
+      }
+
+      &__value {
+        max-width: calc(
+          100vw -
+            (
+              (2 * #{$preview-padding}) + (2 * #{$card-padding}) + #{$card-label-width}
+            )
+        );
+        @include ellipsis;
+      }
+
+      &--double {
+        display: flex;
+
+        .card__body__field {
+          max-width: 50%;
+          flex: 1 0 50%;
+        }
+
+        @media (max-width: 600px) {
+          flex-direction: column;
+          .card__body__field {
+            max-width: 100%;
+            flex: 1 0 100%;
+          }
+        }
+      }
+    }
+  }
+}
